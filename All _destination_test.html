@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>수뭉마을</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+            margin: auto; align-items: center;
+        }
+        .headimg{
+            width: max-content; 
+            height: 200px; 
+            display: block;
+            margin: 0 auto;
+        }
+        .container {
+            display: block;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            max-width: 900px;
+            margin: 0;
+            flex-direction: column;
+            padding: 0 22% 0 22%;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5e5e5e;
+            color: #ffffff;
+            margin: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .button:hover {
+            background-color: #3a3a3a;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+
+        @media only screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .button {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+        .footer{
+            margin: 0; padding: 0;
+            width: auto; height: auto;
+            height: auto;
+            position: relative;
+        }
+        .img1
+        {
+            max-width: 100%;
+        }
+        .img2{
+            max-width: 40%;
+            position: absolute;
+            right: 0%;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/header2.png" class = "headimg" alt="h2">
+    <div class="container">
+        <button class="button" id="1">재현집</button><br>
+        <button class="button" id="2">카리나집</button><br>
+        <button class="button" id="3">수몽편의점</button><br>
+        <button class="button" id="4">STOPMINI</button><br>
+        <button class="button" id="5">상명대학교 병원</button><br>
+        <button class="button" id="6">상명대학교</button><br>
+        <button class="button" id="7">상명통운</button><br>
+        <button class="button" id="8">경찰서</button><br>
+        <button class="button" id="9">사슴약국</button><br>
+        <button class="button" id="10">출발지</button><br>
+    </div>
+    <script src="JS/main.js"></script>
+    <script>
+        try {
+            재현 = document.getElementById("1");
+            재현.addEventListener("click", async (event) => {   
+                move("Jeahyun", 90);
+                speak("재현집으로 이동합니다");
+                console.log("재현집으로 이동")
+            });
+            카리나 = document.getElementById("2");
+            카리나.addEventListener("click", async (event) => {   
+                move("Karina", 90);
+                speak("카리나집으로 이동합니다");
+                console.log("카리나집으로 이동");
+            });
+            수뭉편의점 = document.getElementById("3");
+            수뭉편의점.addEventListener("click", async (event) => {   
+                move("SoomoongConvinence", 90);
+                speak("수뭉편의점으로 이동합니다");
+                console.log("수뭉편의점으로 이동");
+            });
+            스탑미니 = document.getElementById("4");
+            스탑미니.addEventListener("click", async (event) => {   
+                move("Stopmini", 90);
+                speak("스탑미니로 이동합니다");
+                console.log("스탑미니 이동");
+            });
+            상명대학교병원 = document.getElementById("5");
+            상명대학교병원.addEventListener("click", async (event) => {   
+                move("SMHostipal", 90);
+                speak("상명대학교병원으로 이동합니다");
+                console.log("상명대학교병원으로 이동");
+            });
+            상명대학교 = document.getElementById("6");
+            상명대학교.addEventListener("click", async (event) => {   
+                move("SMUniversity", 90);
+                speak("상명대학교으로 이동합니다");
+                console.log("상명대학교 이동");
+            });
+            상명통운 = document.getElementById("7");
+            상명통운.addEventListener("click", async (event) => {   
+                move("SMPostoffice", 90);
+                speak("상명통운으로 이동합니다");
+                console.log("상명통운으로 이동")
+            });
+            경찰서 = document.getElementById("8");
+            경찰서.addEventListener("click", async (event) => {   
+                move("Policestation", 90);
+                speak("경찰서로 이동합니다");
+                console.log("경찰서로 이동")
+            });
+            사슴약국 = document.getElementById("9");
+            사슴약국.addEventListener("click", async (event) => {   
+                move("DeerMed", 90);
+                speak("사슴약국으로 이동합니다");
+                console.log("사슴약국으로 이동");
+            });
+            출발지 = document.getElementById("10");
+            출발지.addEventListener("click", async (event) => {   
+                move("StartingPoint", 90);
+                speak("출발지점으로 이동합니다");
+                console.log("출발지로 이동");
+            });
+        } catch(e) {
+            console.log(e);
+            alert("코드에 문제가 생겼습니다.\n한번 확인 후 잘 모르겠으면 선생님을 불러주세요.");
+        }
+    </script>
+    <footer>
+        <div>
+            <img src="img/footer_bg.png" class = "footer img1">
+            <img src="img/footer_logo.png" class = "footer img2">
+        </div>
+    </footer>
+</body>
+</html>

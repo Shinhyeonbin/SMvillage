@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>수뭉마을</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+            margin: auto;
+            align-items: center;
+        }
+
+        .headimg {
+            width: max-content;
+            height: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .container {
+            display: block;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            max-width: 900px;
+            margin: 0;
+            flex-direction: column;
+            padding: 0 22% 0 22%;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5e5e5e;
+            color: #ffffff;
+            margin: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .button:hover {
+            background-color: #3a3a3a;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+
+        @media only screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .button {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+
+        .footer {
+            margin: 0;
+            padding: 0;
+            width: auto;
+            height: auto;
+            height: auto;
+            position: relative;
+        }
+
+        .img1 {
+            max-width: 100%;
+        }
+
+        .img2 {
+            max-width: 40%;
+            position: absolute;
+            right: 0%;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/header2.png" class="headimg" alt="h2">
+    <div class="container">
+        <button class="button" id="1" onclick="말하기('띠링! 주문들어왔습니다. 주문내용 수몽편의점에서 컵라면을 가지고 재현이 집으로 이동');">1. 주문확인</button><br>
+        <button class="button" id="2" onclick="이동('수뭉편의점', 0); 말하기('수뭉편의점으로 이동합니다.');">2. 수몽편의점으로 이동</button><br>
+        <button class="button" id="3" onclick="말하기('컵라면을 받았습니다');">3. 컵라면 수령</button><br>
+        <button class="button" id="4" onclick="이동('재현집', 90); 말하기('재현집으로 이동합니다');">4. 재현이집으로 이동</button><br>
+        <button class="button" id="5" onclick="말하기('컵라면을 전달했습니다.');">5. 컵라면을 전달</button><br>
+        <button class="button" id="6" onclick="이동('출발지', 90);말하기('임무 완료. 출발지로 이동합니다.');">6. 출발지로 이동</button><br>
+
+    </div>
+    <script src="img/평가용.js"></script>
+    <script>
+        try {
+            OrderReceive = document.getElementById("1");
+            OrderReceive.addEventListener("click", async (event) => {
+                //이동("재현집", 90);
+                말하기("띠링! 주문들어왔습니다. 주문내용 수몽편의점에서 컵라면을 가지고 재현이 집으로 이동");
+                console.log("OrderReceive");
+            });
+            Gotosoomong = document.getElementById("2");
+            Gotosoomong.addEventListener("click", async (event) => {
+                이동("수뭉편의점", 270);
+                말하기("수뭉편의점으로 이동합니다.");
+                console.log("Gotosoomong");
+            });
+            RecieveNoodle = document.getElementById("3");
+            RecieveNoodle.addEventListener("click", async (event) => {
+                //이동("수뭉편의점", 90);
+                말하기("컵라면을 받았습니다");
+                console.log("RecieveNoodle");
+            });
+            GoToJeahyun = document.getElementById("4");
+            GoToJeahyun.addEventListener("click", async (event) => {
+                이동("재현집", 90);
+                말하기("재현집으로 이동합니다");
+                console.log("GoToJeahyun");
+            });
+            ConveyNoodle = document.getElementById("5");
+            ConveyNoodle.addEventListener("click", async (event) => {
+                //이동("", 90);
+                말하기("컵라면을 전달했습니다.");
+                console.log("ConveyNoodle");
+            });
+            GoToStart = document.getElementById("6");
+            GoToStart.addEventListener("click", async (event) => {
+                이동("출발지", 90);
+                말하기("임무 완료. 출발지로 이동합니다.");
+                console.log("GoToStart");
+            });
+        } catch (e) {
+            console.log(e);
+            alert("코드에 문제가 생겼습니다.\n한번 확인 후 잘 모르겠으면 선생님을 불러주세요.");
+        }
+    </script>
+    <footer>
+        <div>
+            <img src="img/footer_bg.png" class="footer img1">
+            <img src="img/footer_logo.png" class="footer img2">
+        </div>
+    </footer>
+</body>
+
+</html>

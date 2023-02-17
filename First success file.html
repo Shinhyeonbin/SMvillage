@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<!-- This file contains the js code.  -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Village of SooMoong </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: block;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            max-width: 900px;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5e5e5e;
+            color: #ffffff;
+            margin: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .button:hover {
+            background-color: #3a3a3a;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+
+        @media only screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .button {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body style="margin: auto; align-items: center;">
+    <img src="img/header2.png" alt="h2" style="width: max-content; height: 200px; display: block; margin: 0 auto;">
+    <div class = "container" style="padding: 0 22% 0 22%;">
+        <button class="button" id="1">1. 수뭉 편의점으로 간다.</button><br>
+        <button class="button" id="2">2. 컵라면을 산다. </button><br>
+        <button class="button" id="3">3. 재현이 집으로 간다.</button><br>
+        <button class="button" id="4">4. 재현이에게 라면을 준다.</button><br>
+        <button class="button" id="5">5. 본부로 복귀 한다.</button><br>
+        <!-- <button class="button" id="6">상명대학교로 출발하기</button><br>
+        <button class="button" id="7">상명통운으로 출발하기</button><br>
+        <button class="button" id="8">경찰서로 출발하기</button><br>
+        <button class="button" id="9">사슴약국으로 출발하기</button><br>
+        <button class="button" id="10">출발지로 복귀하기</button><br> -->
+    </div>
+    <script>
+        const server = "http://192.168.1.6"
+
+        일 = document.getElementById("1");
+        일.addEventListener("click", async (event) => {
+            이동("수뭉편의점", 90);
+            //alert("재현집으로 출발");
+        });
+
+
+        이 = document.getElementById("2");
+        이.addEventListener("click", async (event) => {
+            //이동(-8, 2.2, 180);
+            alert("컵라면 주세요");
+        });
+
+        삼 = document.getElementById("3");
+        삼.addEventListener("click", async (event) => {
+            이동("재현집", 180);
+        });
+
+        사 = document.getElementById("4");
+        사.addEventListener("click", async (event) => {
+            //이동(-3.74, 4.23, -90);
+            alert("컵라면 왔슴돵");
+        });
+
+        오 = document.getElementById("5");
+        오.addEventListener("click", async (event) => {
+            이동("출발지", 180);
+            //alert("STOP MINI로 출발");
+        });
+
+
+        //버튼을 눌렀을때 자동으로 이동하게 구성함. -> 기존 코드의 EventListener대체
+        //{"x":-6.720169702446654,"y":6.702279827249054,"theta":1.6333412056865437}
+
+        function 이동(위치, tmp_theta) {
+
+            switch (위치) {
+                case "재현집":
+                    tmp_x = -6.72;
+                    tmp_y = 6.70;
+                    break;
+                case "카리나집":
+                    tmp_x = -8;
+                    tmp_y = 2.2;
+                    break;
+                case "상명대학교병원":
+                    tmp_x = -4.78;
+                    tmp_y = 2.31;
+                    break;
+                case "수뭉편의점":
+                    tmp_x = -3.74;
+                    tmp_y = 4.22;
+                    break;
+                case "스탑미니":
+                    tmp_x = -1.77;
+                    tmp_y = 2.99;
+                    break;
+
+                case "상명대학교":
+                    tmp_x = 1.66;
+                    tmp_y = 2.97;
+                    break;
+                case "우체국":
+                    tmp_x = 2.37;
+                    tmp_y = 4.83;
+                    break;
+                case "경찰서":
+                    tmp_x = 5.32;
+                    tmp_y = 3.75;
+                    break;
+                case "사슴약국":
+                    tmp_x = 6.05;
+                    tmp_y = 1.35;
+                    break;
+                case "출발지":
+                    tmp_x = 0;
+                    tmp_y = 0;
+                    break;
+                default:
+                    console.log("이동위치잘못됨");
+                    break;
+            }
+
+            console.log("init - [fn_click_send]");
+
+            console.log("tmp_x:" + tmp_x);
+            console.log("tmp_y:" + tmp_y);
+            console.log("tmp_theta:" + tmp_theta);
+
+            tmp_theta = parseFloat(tmp_theta) * (Math.pi / 180);
+
+
+            fn_cmd_nav_by_coordinate(tmp_x, tmp_y, tmp_theta);
+            // const myPromise = new Promise((resolve, reject) => {
+            //     const data2 = fn_cmd_nav_by_coordinate(tmp_x, tmp_y, tmp_theta);
+            //     console.log(data2);
+            //     resolve("Operation completed successfully");
+            // });
+            // myPromise.then((result)=>{
+            //     console.log(result);
+            // }).catch((error)=>{
+            //     console.error(error);
+            // });
+        }
+
+        function fn_cmd_nav_by_coordinate(arg_x, arg_y, arg_theta) {
+            console.log("init - [fn_cmd_nav_by_coordinate] " + arg_x + ", " + arg_y + ", " + arg_theta);
+            const response = fetch(server + '/cmd/nav', {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json; charset=UTF-8', },
+                body: JSON.stringify({
+                    "x": parseFloat(arg_x),
+                    "y": parseFloat(arg_y),
+                    "theta": parseFloat(arg_theta),
+                })
+            })
+                .then(response => {
+                    let result = response.text()
+                    result.then(res => {
+                        console.log(res)
+                    })
+                })
+        }
+    </script>
+</body>
+</html>
