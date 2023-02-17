@@ -5,9 +5,10 @@
   	<h2> SM village</h2>
   	This project is an educational project for middle and high school students.
 
-  	<p>The purpose of the project is to develop creative and programming thinking on a given topic by students understanding how delivery service robots work and writing their own code.</p>
-	<p>The server of the main.js code may be changed.</p>
-	<p>Can be added if needed (only move, speak function exists now)</p>
+  	The purpose of the project is to develop creative and programming thinking on a given topic by students understanding 
+	how delivery service robots work and writing their own code.
+	The server of the main.js code may be changed.
+	Can be added if needed (only move, speak function exists now)
 </div>
 
 <div align=center>
